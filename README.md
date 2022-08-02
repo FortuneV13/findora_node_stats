@@ -1,4 +1,4 @@
-# Harmony Node Stats
+# findora Node Stats
 
 ## vStatsBot Alerts
 - This is an automated script that will periodically ( every 30 mins ) send your node data to vStats for dashboard + alerts.
@@ -16,48 +16,8 @@ Example dashboard https://vstats.test/node-stats/example
 
 Node summary request. Type /nodestats for a server summary. These are also scheduled daily. 
 
-All of the below can be toggled on or off via the .env file.
-
-- <b>Blockchain Sync - Compares local vs remote height</b>
-```
-🔻Shard2-Hel --- Shard 0 Behind🔻
-Remote: 22716160
-Local: 22711441
-Difference: -4719
-```
-- <b>Space Left - Alerts you when space is lower than 30GB</b>
-```
-🔻Shard2-fsn --- Space Low 20GB Left🔻
-```
-- <b>If your node has gone into 'Syncing' mode due to a harmony error, it will alert you.</b>
-```
-🚨!!! shard3-fsn = Syncing !!!🚨
-Please check node.
-```
-- <b>Daily Node Summary Updates</b>
-```
-🔶Shard3 Fsn🔶
-Mode: Normal
-Space: 846G
-Shard 0: Synced
-Shard 3: Synced
-Load: 2.63
-Updated: 28 mins ago 
-```
-- <b>Double Signing Check (disabled by default) - Alerts you if a bls key is found on one or more signing servers</b>
-```
-🚨Double Signing🚨
-Identical Keys exist on multiple signing Shard 3 servers: 
-shard3-fsn
-shard3-hel
-Matched Keys:
-0701becb090da6d7a74175f645c3827756433278064b89a3299fceaf95c5faa2faeab642bd5c46e30128f1240742ce8f
-Date & Time: 2022-02-07 13:03:34
-```
-
 ## Data Collected
-- Harmony Utility Metadata ( blskey list, version number )
-- Blockchain Height ( Remote + Local )
+- Findora Utility Metadata 
 - Hostname
 - Server Load
 - Server Space in current filesystem
@@ -72,8 +32,8 @@ We suggest storing it in your home folder.
 
 ```
 cd ~/
-git clone https://github.com/DavidWhicker/harmony_node_stats.git
-cd harmony_node_stats
+git clone https://github.com/FortuneV13/findora_node_stats
+cd findora_node_stats
 ```
 To update use `git pull`
 
@@ -100,21 +60,6 @@ nano .env
 ```
 #Add your token from vstats. Run /token on vStatsBot
 VSTATS_TOKEN="" 
-
-# Validator Address
-VALIDATOR_ADDRESS=""
-
-# Alert when blskey match is found on 1 or more servers | Default: false  
-DOUBLE_SIGN_CHECK_ENABLED=true|false 
-
-# Alert when local vs remote gap is larger than 100 | Default: true  
-SYNC_CHECK_ENABLED=true|false 
-
-# Alert when space is less than 30GB | Default: true  
-SPACE_CHECK_ENABLED=true|false
-
-# Add path containing .hmy. Run pwd in .hmy location to get full path e.g /home/serviceharmony/harmony 
-HARMONY_FOLDER=""
 ```
 ### 4) Test Script 
 Test the .env variables and script is working as expected. 
@@ -136,9 +81,9 @@ Run the following with root privileges. If you do not have access with root then
 Please note: add correct info for USER & PATH TO SCRIPT
 
 ```
-cat<<-EOF > /etc/systemd/system/harmony_node_stats.service
+cat<<-EOF > /etc/systemd/system/findora_node_stats.service
 [Unit]
-Description=harmony_node_stats daemon
+Description=findora_node_stats daemon
 After=network-online.target
 
 [Service]
@@ -148,7 +93,7 @@ RestartSec=1
 User=USER
 WorkingDirectory=PATH TO SCRIPT
 ExecStart=python3 main.py
-SyslogIdentifier=harmony_node_stats
+SyslogIdentifier=findora_node_stats
 StartLimitInterval=0
 LimitNOFILE=65536
 LimitNPROC=65536
@@ -161,17 +106,17 @@ Followed by:
 
 ```
 sudo systemctl daemon-reload
-sudo chmod 755 /etc/systemd/system/harmony_node_stats.service
-sudo systemctl enable harmony_node_stats.service
-sudo service harmony_node_stats start
-sudo service harmony_node_stats status
+sudo chmod 755 /etc/systemd/system/findora_node_stats.service
+sudo systemctl enable findora_node_stats.service
+sudo service findora_node_stats start
+sudo service findora_node_stats status
 ```
 
 ### 5b) Alternative Setup - Tmux
 
-`tmux new-session -s harmony_node_stats`
+`tmux new-session -s findora_node_stats`
 
-`cd ~/harmony_node_stats/`
+`cd ~/findora_node_stats/`
 
 `python3 main.py`
 
@@ -182,19 +127,19 @@ Check logs to make sure the script is running as expected.
 ### Misc
 Start Service
 ```
-sudo service harmony_node_stats start
+sudo service findora_node_stats start
 ```
 
 Stop Service
 ```
-sudo service harmony_node_stats stop
+sudo service findora_node_stats stop
 ```
 Restart Service
 ```
-sudo service harmony_node_stats restart
+sudo service findora_node_stats restart
 ```
 
 Status Check
 ```
-sudo service harmony_node_stats status
+sudo service findora_node_stats status
 ```

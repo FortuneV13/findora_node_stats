@@ -49,7 +49,10 @@ def getStatus():
     return get_json_for_command_nodeStats(["curl","http://localhost:26657/status"])
     
         
-
+def getFnShow():
+    return get_json_for_command_nodeStats(["fn","show"])
+    
+       
     
     
     

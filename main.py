@@ -22,7 +22,7 @@ while True:
     load = None
     status = None
     space = None
-   
+    fnShow = None
         
     try:
         # Get Server Load
@@ -37,7 +37,13 @@ while True:
             status = getStatus()
         except Exception as e:
             status = None
-            
+
+        try:
+            # Shard 0 - Remote
+            fnShow = getStatus()
+        except Exception as e:
+            fnShow = None
+
         try:
             # Space left
             space = subprocess.check_output('df -BG --output=avail "$PWD" | tail -n 1', shell=True).decode(sys.stdout.encoding)
@@ -45,7 +51,7 @@ while True:
             space = None
             
         # # Send to vStats
-        alerts.send_to_vstats(status, load,space,count)
+        alerts.send_to_vstats(status, fnShow, load,space,count)
         
     except Exception as e:
         log.error(e) 

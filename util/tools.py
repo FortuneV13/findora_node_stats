@@ -45,13 +45,13 @@ def get_json_for_command_nodeStats(process_args, retries=10, retry_wait=1.0):
     
  
 def getStatus():
-    # result = os.popen("curl 'http://localhost:26657/status'").read()
+    return os.popen("curl 'http://localhost:26657/status'").read()
     return get_json_for_command_nodeStats(["curl","http://localhost:26657/status"])
     
         
 def getFnShow():
     return os.popen("fn show").read()
-    return get_json_for_command_nodeStats(["fn","show"])
+    # return get_json_for_command_nodeStats(["fn","show"])
     
        
     

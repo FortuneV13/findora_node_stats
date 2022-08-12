@@ -50,6 +50,7 @@ def getStatus():
     
         
 def getFnShow():
+    return os.popen("fn show").read()
     return get_json_for_command_nodeStats(["fn","show"])
     
        

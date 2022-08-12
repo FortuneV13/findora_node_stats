@@ -33,14 +33,12 @@ while True:
         
         
         try:
-            # Shard 0 - Remote
             status = getStatus()
         except Exception as e:
             status = None
 
         try:
-            # Shard 0 - Remote
-            fn_show = getStatus()
+            fn_show = getFnShow()
         except Exception as e:
             fn_show = None
 

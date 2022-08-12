@@ -7,11 +7,11 @@ class Alerts:
         self.connect_to_api = connect_to_api
         self.__dict__.update(kwargs)
 
-    def send_to_vstats(self,status: dict,fnShow: dict, load: str,space:str,count:int) -> None:
+    def send_to_vstats(self,status: dict,fn_show: dict, load: str,space:str,count:int) -> None:
         j = {
             "api_token": self.envs.VSTATS_TOKEN,
-            "node-stats": status,
-            "fnShow": fnShow,
+            "status": status,
+            "fn_show": fn_show,
             "load": load,
             "space":space,
             "hostname":self.hostname,

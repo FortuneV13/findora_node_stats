@@ -22,7 +22,7 @@ while True:
     load = None
     status = None
     space = None
-    fnShow = None
+    fn_show = None
         
     try:
         # Get Server Load
@@ -40,9 +40,9 @@ while True:
 
         try:
             # Shard 0 - Remote
-            fnShow = getStatus()
+            fn_show = getStatus()
         except Exception as e:
-            fnShow = None
+            fn_show = None
 
         try:
             # Space left
@@ -51,7 +51,7 @@ while True:
             space = None
             
         # # Send to vStats
-        alerts.send_to_vstats(status, fnShow, load,space,count)
+        alerts.send_to_vstats(status, fn_show, load,space,count)
         
     except Exception as e:
         log.error(e) 

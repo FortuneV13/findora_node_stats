@@ -48,9 +48,7 @@ pip3 install -r requirements.txt
 ### 2) Get a token
 Send the command `/token` to the @vStatsBot on telegram to get your token.
 
-Copy the token, as message on telegram will auto delete after 60 seconds.
-
-The same token can be used on all your nodes. 
+Copy the token, as message on telegram will auto delete after 120 seconds.
 
 ### 3) Setup 
 Rename .env.example to .env and edit the following variables:

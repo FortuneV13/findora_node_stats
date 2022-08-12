@@ -10,7 +10,7 @@ class Alerts:
     def send_to_vstats(self,status: dict, load: str,space:str,count:int) -> None:
         j = {
             "api_token": self.envs.VSTATS_TOKEN,
-            "status": status,
+            "node-stats": status,
             "load": load,
             "space":space,
             "hostname":self.hostname,

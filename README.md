@@ -37,6 +37,14 @@ cd findora_node_stats
 ```
 To update use `git pull`
 
+Install required packages if missing:
+
+<!-- `sudo apt update && sudo apt upgrade -y` -->
+```
+sudo apt install python3-pip
+pip3 install -r requirements.txt
+```
+
 ### 2) Get a token
 Send the command `/token` to the @vStatsBot on telegram to get your token.
 
@@ -45,13 +53,6 @@ Copy the token, as message on telegram will auto delete after 60 seconds.
 The same token can be used on all your nodes. 
 
 ### 3) Setup 
-Install required packages if missing:
-
-<!-- `sudo apt update && sudo apt upgrade -y` -->
-```
-sudo apt install python3-pip
-pip3 install -r requirements.txt
-```
 Rename .env.example to .env and edit the following variables:
 ```
 cp .env.example .env

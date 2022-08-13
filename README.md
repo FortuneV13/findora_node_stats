@@ -71,16 +71,16 @@ python3 main.py
 
 Alerts on screen AND vStatsBot should appear. Once successful, please cancel the script ( CTRL + C ) and move onto the next step.
 
-## Automate the script via a service (5a) or tmux session (5b).
-### 5a) Setup Service
+## 5) Create Service
 Now setup script to run as a service in the background. 
 
-Run the following with root privileges. If you do not have access with root then you may setup a tmux session ( see: Alternative Setup - Tmux ).
-
-Please note: add correct info for USER & PATH TO SCRIPT
+Run the following with sudo privileges. 
 
 ```
-cat<<-EOF > /etc/systemd/system/findora_node_stats.service
+sudo vi /etc/systemd/system/findora_node_stats.service
+```
+Copy the below into the service file making sure to edit the User and WorkingDirectory
+```
 [Unit]
 Description=findora_node_stats daemon
 After=network-online.target
@@ -99,10 +99,8 @@ LimitNPROC=65536
 
 [Install]
 WantedBy=multi-user.target
-EOF
 ```
 Followed by:
-
 ```
 sudo systemctl daemon-reload
 sudo chmod 755 /etc/systemd/system/findora_node_stats.service
@@ -110,14 +108,6 @@ sudo systemctl enable findora_node_stats.service
 sudo service findora_node_stats start
 sudo service findora_node_stats status
 ```
-
-### 5b) Alternative Setup - Tmux
-
-`tmux new-session -s findora_node_stats`
-
-`cd ~/findora_node_stats/`
-
-`python3 main.py`
 
 
 ### Logs

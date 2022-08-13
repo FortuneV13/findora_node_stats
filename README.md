@@ -79,7 +79,7 @@ Run the following with sudo privileges.
 ```
 sudo vi /etc/systemd/system/findora_node_stats.service
 ```
-Copy the below into the service file making sure to edit the User and WorkingDirectory
+Copy the below into the service file making sure to edit the User and WorkingDirectory first.
 ```
 [Unit]
 Description=findora_node_stats daemon
@@ -100,7 +100,7 @@ LimitNPROC=65536
 [Install]
 WantedBy=multi-user.target
 ```
-Type :wq to save and exit. 
+Type `:wq` to save and exit. 
 
 Now enable the service:
 ```

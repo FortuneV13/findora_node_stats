@@ -100,7 +100,9 @@ LimitNPROC=65536
 [Install]
 WantedBy=multi-user.target
 ```
-Followed by:
+Type :wq to save and exit. 
+
+Now enable the service:
 ```
 sudo systemctl daemon-reload
 sudo chmod 755 /etc/systemd/system/findora_node_stats.service

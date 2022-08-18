@@ -9,6 +9,7 @@
 If node has fallen out of sync or space then you will get an automatic alert.
 
 You will also get twice daily node summary updates e.g
+```
 🔶FRA🔶
 In Sync: True
 Version: 0.33.9
@@ -17,7 +18,7 @@ Unclaimed FRA: 2,026
 Load: 0.21 | 0.32 | 0.28
 Space: 59G
 Updated: 18 mins ago
-
+```
 Type /nodestats an on demand summary.
 
 ## Download the script 

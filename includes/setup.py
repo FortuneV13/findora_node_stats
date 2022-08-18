@@ -18,13 +18,9 @@ logging.basicConfig(
 )
 log = logging.getLogger()
 
-envs = Envs()
-
-
 VSTATS_API = "https://fstats.vstats.one/api/node-stats"
 
 alerts_context = dict(
-    envs=envs,
     LOOP_COUNT=0,
     hostname=hostname
 )

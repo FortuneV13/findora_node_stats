@@ -1,0 +1,18 @@
+[Unit]
+Description=findora_node_stats daemon
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=servicefindora
+WorkingDirectory=/home/servicefindora/findora_node_stats
+ExecStart=python3 /home/servicefindora/findora_node_stats/main.py
+SyslogIdentifier=findora_node_stats
+StartLimitInterval=0
+LimitNOFILE=65536
+LimitNPROC=65536
+
+[Install]
+WantedBy=multi-user.target

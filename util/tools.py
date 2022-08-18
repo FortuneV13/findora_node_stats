@@ -1,7 +1,7 @@
 import os
 import simplejson
 from time import sleep
-from includes.config import *
+from includes.setup import *
 from subprocess import PIPE, Popen
 
 #robo

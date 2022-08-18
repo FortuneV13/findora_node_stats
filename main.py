@@ -1,7 +1,7 @@
 import subprocess
 import os
 from time import sleep
-from includes.config import *
+from includes.setup import *
 from util.connect import connect_to_api
 from util.tools import *
 from bases.alerts import Alerts
@@ -58,7 +58,4 @@ while True:
         
 
     # Delay by x seconds
-    #sleep(envs.RUN_EVERY_X_MINUTES * 60)
     sleep(30*60)
-    # Hot reload Env
-    envs.load_envs()

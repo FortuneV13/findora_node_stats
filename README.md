@@ -1,64 +1,60 @@
 # findora Node Stats
 
 ## vStatsBot Alerts
-- This is an automated script that will periodically ( every 30 mins ) send your node data to vStats for dashboard + alerts.
-- Each alert can be turned on and off on a node by node basis ( via .env ) or globally via /notifications on vStatsBot.
-
-### Dashboard:
-
-Shows your node stats on a single page.
-
-Unique page can be found by running /nodestats in vStatsBot
-
-Example dashboard https://vstats.test/node-stats/example
+- This is an automated script that will periodically ( every 30 mins ) check your node for errors e.g out of sync and alert you via vStatsBot.
+- Each alert can be turned on and off via /notifications on vStatsBot.
 
 ### Alerts:
 
-Node summary request. Type /nodestats for a server summary. These are also scheduled daily. 
+If node has fallen out of sync or space then you will get an automatic alert.
 
-## Data Collected
-- Findora Utility Metadata 
-- Hostname
-- Server Load
-- Server Space in current filesystem
+You will also get twice daily node summary updates e.g
+🔶FRA🔶
+In Sync: True
+Version: 0.33.9
+Latest Block: 2,744,106
+Unclaimed FRA: 2,026
+Load: 0.21 | 0.32 | 0.28
+Space: 59G
+Updated: 18 mins ago
 
-## Pre Installation Notes
-- Script must be installed on each individual node
+Type /nodestats an on demand summary.
 
-## Installation 
-
-### 1) Download the script
-We suggest storing it in your home folder.
-
+## Download the script 
 ```
-cd ~/
-git clone https://github.com/FortuneV13/findora_node_stats
-cd findora_node_stats
-```
-To update use `git pull`
-
-Install required packages if missing:
-
-<!-- `sudo apt update && sudo apt upgrade -y` -->
-```
-sudo apt install python3-pip
-pip3 install -r requirements.txt
+cd ~/ && git clone https://github.com/FortuneV13/findora_node_stats && cd findora_node_stats
 ```
 
-### 2) Get a token
+## Automatic Installation:
+```
+python3 install.py
+```
+You will need to obtain a token from vStatsBot using the /token command on the bot. The installation script will ask for this token. 
+
+A special thanks to Patrick (Easy Node Validator) for supplying this script to help speed up the installation process. 
+
+## Manual Installation:
+### Get a token
 Send the command `/token` to the @vStatsBot on telegram to get your token.
 
 Copy the token, as message on telegram will auto delete after 120 seconds.
 
-### 3) Setup 
-Rename .env.example to .env and edit the following variables:
+### Setup 
+Install required packages if missing:
 ```
-cp .env.example .env
-nano .env
+sudo apt install python3-pip
+pip3 install -r requirements.txt
 ```
+Rename config.example.py to config.py and edit the following variables:
+```
+cp config.example.py config.py
+```
+
+Edit config.py variables ( now support for multiple shards per server):
 ```
 #Add your token from vstats. Run /token on vStatsBot
 VSTATS_TOKEN="" 
+
 ```
 ### 4) Test Script 
 Test the .env variables and script is working as expected. 
